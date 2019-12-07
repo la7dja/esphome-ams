@@ -33,8 +33,8 @@ dallas:
 
 uart:
   id: han_bus
-  rx_pin: 4 # software UART. To enable hardware UART, change to pin 3 and disable logger
-#  rs_pin: 3
+#  rx_pin: 4 # software UART. To enable hardware UART, change to pin 3 and disable logger
+  rx_pin: 3
   baud_rate: 2400
 
 
