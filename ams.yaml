@@ -1,0 +1,104 @@
+esphome:
+  name: ams
+  platform: ESP8266
+  board: esp12e
+  includes: 
+    - Aidon.h
+    - Kaifa.h
+    - Kamstrup.h
+    - crc16.h
+    - dlms-decoder.h
+    - han-decoder.h
+    - ams.h
+
+wifi:
+  ssid: !secrets wifi_ssid
+  password: !secrets wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Ams Fallback Hotspot"
+    password: !secrets ap_password
+
+captive_portal:
+
+#logger:
+  
+api:
+
+ota:
+
+dallas:
+  - pin: 5
+
+uart:
+  id: han_bus
+  rx_pin: 4 # software UART. To enable hardware UART, change to pin 3 and disable logger
+#  rs_pin: 3
+  baud_rate: 2400
+
+
+custom_component:
+  - id: ams
+    lambda: |-
+      auto ams = new AMS(id(han_bus));
+      return {ams};
+
+
+sensor:
+  - platform: dallas
+    index: 0
+    name: "AMS Temperature"
+
+  - platform: custom
+    lambda: |-
+      return get_ams_component(id(ams))->sensors();
+
+    sensors:
+      - name: "Active power"
+        unit_of_measurement: "W"
+        accuracy_decimals: 0
+      - name: "Reactive power"
+        unit_of_measurement: "var"
+        accuracy_decimals: 0
+      - name: "Current phase L1"
+        unit_of_measurement: "A"
+        accuracy_decimals: 2
+      - name: "Current phase L2"
+        unit_of_measurement: "A"
+        accuracy_decimals: 2
+      - name: "Current phase L3"
+        unit_of_measurement: "A"
+        accuracy_decimals: 2
+      - name: "Voltage phase L1"
+        unit_of_measurement: "V"
+        accuracy_decimals: 0
+      - name: "Voltage phase L2"
+        unit_of_measurement: "V"
+        accuracy_decimals: 0
+      - name: "Voltage phase L3"
+        unit_of_measurement: "V"
+        accuracy_decimals: 0
+      - name: "Active import energy"
+        unit_of_measurement: "Ah"
+        accuracy_decimals: 0
+      - name: "Active export energy"
+        unit_of_measurement: "Ah"
+        accuracy_decimals: 0
+      - name: "Reactive import energy"
+        unit_of_measurement: "varh"
+        accuracy_decimals: 0
+      - name: "Reactive export energy"
+        unit_of_measurement: "varh"
+        accuracy_decimals: 0
+
+text_sensor:
+  - platform: custom
+    lambda: |-
+      return get_ams_component(id(ams))->text_sensors();
+
+    text_sensors:
+      - name: "List version ID"
+      - name: "Meter ID"
+      - name: "Meter type"
+
