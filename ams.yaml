@@ -12,13 +12,13 @@ esphome:
     - ams.h
 
 wifi:
-  ssid: !secrets wifi_ssid
-  password: !secrets wifi_password
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Ams Fallback Hotspot"
-    password: !secrets ap_password
+    password: !secret ap_password
 
 captive_portal:
 
