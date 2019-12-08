@@ -60,18 +60,18 @@ class AMS : public Component, public UARTDevice {
   DlmsDecoder dlms;
   HanDecoder han;
   
-  AMSSensor active_power;
-  AMSSensor reactive_power;
+  AMSSensor active_power{0.001};
+  AMSSensor reactive_power{0.001};
   AMSSensor current_L1{0.01};
   AMSSensor current_L2{0.01};
   AMSSensor current_L3{0.01};
   AMSSensor voltage_L1;
   AMSSensor voltage_L2;
   AMSSensor voltage_L3;
-  AMSSensor active_import_energy;
-  AMSSensor active_export_energy;
-  AMSSensor reactive_import_energy;
-  AMSSensor reactive_export_energy;
+  AMSSensor active_import_energy{0.001};
+  AMSSensor active_export_energy{0.001};
+  AMSSensor reactive_import_energy{0.001};
+  AMSSensor reactive_export_energy{0.001};
   AMSTextSensor list_version_id;
   AMSTextSensor meter_id;
   AMSTextSensor meter_type;
