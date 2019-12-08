@@ -72,25 +72,25 @@ sensor:
         accuracy_decimals: 2
       - name: "Voltage phase L1"
         unit_of_measurement: "V"
-        accuracy_decimals: 0
+        accuracy_decimals: 1
       - name: "Voltage phase L2"
         unit_of_measurement: "V"
-        accuracy_decimals: 0
+        accuracy_decimals: 1
       - name: "Voltage phase L3"
         unit_of_measurement: "V"
-        accuracy_decimals: 0
+        accuracy_decimals: 1
       - name: "Active import energy"
         unit_of_measurement: "kWh"
-        accuracy_decimals: 3
+        accuracy_decimals: 2
       - name: "Active export energy"
         unit_of_measurement: "kWh"
-        accuracy_decimals: 3
+        accuracy_decimals: 2
       - name: "Reactive import energy"
         unit_of_measurement: "kVArh"
-        accuracy_decimals: 3
+        accuracy_decimals: 2
       - name: "Reactive export energy"
         unit_of_measurement: "kVArh"
-        accuracy_decimals: 3
+        accuracy_decimals: 2
 
 text_sensor:
   - platform: custom
