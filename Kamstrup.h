@@ -40,14 +40,6 @@ enum class Kamstrup_List3Phase {
   VoltageL3,
   MeterClock_OBIS,
   MeterClock,
-  CumulativeActiveImportEnergy_OBIS,
-  CumulativeActiveImportEnergy,
-  CumulativeActiveExportEnergy_OBIS,
-  CumulativeActiveExportEnergy,
-  CumulativeReactiveImportEnergy_OBIS,
-  CumulativeReactiveImportEnergy,
-  CumulativeReactiveExportEnergy_OBIS,
-  CumulativeReactiveExportEnergy,
   EndOfList
 };
 
