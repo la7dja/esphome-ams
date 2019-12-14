@@ -79,6 +79,8 @@ class AMS : public Component, public UARTDevice {
   void update() {
     if (han.is_list_version_id("Kamstrup_V0001"))
       update_kamstrup();
+    else if (han.is_list_version_id("KAIFA_V0001"))
+      update_kaifa();
     else if (han.is_list_version_id("AIDON_V0001"))
       update_aidon();
     else
